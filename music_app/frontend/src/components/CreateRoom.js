@@ -5,18 +5,17 @@ import {
   Typography,
   TextField,
   FormHelperText,
-  //   FormGroup,
   FormControl,
   RadioGroup,
   Radio,
   FormControlLabel,
-  FormLabel,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 export default class CreateRoom extends Component {
+  defaultValues = 2;
   constructor(props) {
     super(props);
-    this.defaultValues = 2;
   }
 
   render() {
@@ -66,6 +65,18 @@ export default class CreateRoom extends Component {
               <div align="center">Votes to skip song</div>
             </FormHelperText>
           </FormControl>
+        </Grid>
+        {/* ======================== Grid 4 ========================== */}
+        <Grid item sm={12} md={6} align="center" component={Link}>
+          <Button color="primary" variant="contained">
+            Create A Room
+          </Button>
+        </Grid>
+        {/* ======================== Grid 5 ========================== */}
+        <Grid item sm={12} md={6} align="center">
+          <Button color="secondary" variant="contained" to="/" component={Link}>
+            Back
+          </Button>
         </Grid>
       </Grid>
     );
