@@ -7,17 +7,14 @@ import HomePage from './HomePage';
 
 export default function App(){
     return (
-      <div>
-        Hello world
-      </div>
-      //   <Router>
-      //   <Switch>
-      //     <Route exact path="/" component={ HomePage } />
-      //     <Route path="/join" component={RoomJoinPage} />
-      //     <Route path="/create" component={CreateRoom} />
-      //   </Switch>
-      // </Router>
-    );
+        <Router>
+          <Switch>
+            <Route exact path="/" component={ HomePage } />
+            <Route path="/join" component={RoomJoinPage} />
+            <Route path="/create" component={CreateRoom} />
+          </Switch>
+        </Router>
+    ); 
 }
 
 const appDiv = document.getElementById('app');
