@@ -14,7 +14,7 @@ export default function App(){
             <Route path="/create" component={CreateRoom} />
           </Switch>
         </Router>
-    );
+    ); 
 }
 
 const appDiv = document.getElementById('app');
