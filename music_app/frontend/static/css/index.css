@@ -1,0 +1,15 @@
+html,body{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+#main{
+    height: 100%;
+}
+#app{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
