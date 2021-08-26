@@ -11,26 +11,40 @@ import {
   FormControlLabel,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default class CreateRoom extends Component {
   defaultValue = 2;
   constructor(props) {
     super(props);
     this.state = {
-      voteToSkip: 2,
-      guestCanPause: false,
+      voteToSkip: this.defaultValue,
+      guestCanPause: true,
     };
   }
   handleVotes = (e) => {
     this.setState({
-      voteToSkip: e.target.value,
+      voteToSkip: parseInt(e.target.value),
     });
-  }
+  };
   handleCanPause = (e) => {
     this.setState({
       guestCanPause: e.target.value === "true" ? true : false,
     });
-  }
+  };
+  handleSubmit = async () => {
+    // peforms a post request using axios
+    // creates a new room for the user
+    try {
+      const res = await axios.post("http://127.0.0.1:8000/api/create-room/", {
+        vote_to_skip: this.state.voteToSkip,
+        guest_can_pause: this.state.guestCanPause,
+      });
+      console.log(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   render() {
     return (
@@ -82,8 +96,12 @@ export default class CreateRoom extends Component {
           </FormControl>
         </Grid>
         {/* ======================== Grid 4 ========================== */}
-        <Grid item sm={12} md={6} align="center" component={Link}>
-          <Button color="primary" variant="contained">
+        <Grid item sm={12} md={6} align="center">
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={this.handleSubmit}
+          >
             Create A Room
           </Button>
         </Grid>
