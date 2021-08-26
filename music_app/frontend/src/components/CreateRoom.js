@@ -13,9 +13,23 @@ import {
 import { Link } from "react-router-dom";
 
 export default class CreateRoom extends Component {
-  defaultValues = 2;
+  defaultValue = 2;
   constructor(props) {
     super(props);
+    this.state = {
+      voteToSkip: 2,
+      guestCanPause: false,
+    };
+  }
+  handleVotes = (e) => {
+    this.setState({
+      voteToSkip: e.target.value,
+    });
+  }
+  handleCanPause = (e) => {
+    this.setState({
+      guestCanPause: e.target.value === "true" ? true : false,
+    });
   }
 
   render() {
@@ -32,7 +46,7 @@ export default class CreateRoom extends Component {
             <FormHelperText>
               <div align="center">Guest Control of playback state</div>
             </FormHelperText>
-            <RadioGroup row defaultValue="true">
+            <RadioGroup row defaultValue="true" onChange={this.handleCanPause}>
               <FormControlLabel
                 value="true"
                 control={<Radio color="primary" />}
@@ -53,9 +67,10 @@ export default class CreateRoom extends Component {
         <Grid item sm={12} align="center">
           <FormControl component="fieldset">
             <TextField
+              onChange={this.handleVotes}
               required={true}
               type="number"
-              defaultValue={this.defaultValues}
+              defaultValue={this.defaultValue}
               inputProps={{
                 min: 1,
                 style: { textAlign: "center" },
