@@ -18,3 +18,6 @@ class Room(models.Model):
     vote_to_skip = models.IntegerField(null=False, default=2)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.code
+
